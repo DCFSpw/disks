@@ -36,6 +36,8 @@ services:
     environment:
     - USERS="dcfs|UszatekM*01"
     - ADDRESS="ftp.dcfs.pw"
+    ports:
+    - 21:21
 
   sftp:
     container_name: sftp
@@ -44,6 +46,8 @@ services:
     - disks
     restart: unless-stopped
     command: dcfs:UszatekM*01:1001
+    ports:
+    - 22:22
 
 networks:
   disks:
