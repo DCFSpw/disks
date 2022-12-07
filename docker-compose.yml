@@ -44,3 +44,6 @@ services:
     - disks
     restart: unless-stopped
     command: dcfs:UszatekM*01:1001
+
+networks:
+  disks:
