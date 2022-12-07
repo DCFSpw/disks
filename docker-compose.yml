@@ -28,7 +28,7 @@ services:
     - "host.docker.internal:host-gateway"
 
   ftp:
-    containter_name: ftp
+    container_name: ftp
     image: delfer/alpine-ftp-server
     networks:
     - disks
@@ -38,7 +38,7 @@ services:
     - ADDRESS="ftp.dcfs.pw"
 
   sftp:
-    containter_name: sftp
+    container_name: sftp
     image: atmoz/sftp
     networks:
     - disks
