@@ -1,32 +1,6 @@
 version: "2.0"
 services:
 
-  swag:
-    container_name: swag
-    image: ghcr.io/linuxserver/swag
-    networks:
-    - disks
-    cap_add:
-    - NET_ADMIN
-    restart: unless-stopped
-    volumes:
-    - ./nginx/site-confs:/config/nginx/site-confs
-    - ./nginx/cert/cloudflare.ini:/config/dns-conf/cloudflare.ini
-    ports:
-    - 443:443
-    - 80:80
-    environment:
-    - PUID=1000
-    - PGID=1000
-    - TZ=Europe/Warsaw
-    - URL=dcfs.pw
-    - SUBDOMAINS=ftp,sftp
-    - VALIDATION=dns
-    - DNSPLUGIN=cloudflare
-    - DUCKDNSTOKEN=e68c855a-e1d6-4da3-ac66-0443bc4bf250
-    extra_hosts:
-    - "host.docker.internal:host-gateway"
-
   ftp:
     container_name: ftp
     image: delfer/alpine-ftp-server
@@ -37,7 +11,7 @@ services:
     - USERS="dcfs|UszatekM*01"
     - ADDRESS="ftp.dcfs.pw"
     ports:
-    - 21:21
+    - 2021:21
 
   sftp:
     container_name: sftp
@@ -47,7 +21,7 @@ services:
     restart: unless-stopped
     command: dcfs:UszatekM*01:1001
     ports:
-    - 22:22
+    - 2022:22
 
 networks:
   disks:
